@@ -56,39 +56,39 @@ public interface AccountService {
     /**
      * 根据UserId查询对象
      */
-    Account getSysAccountByUserId(Integer userId);
+    Account getAccountByUserId(Integer userId);
 
 
     /**
      * 根据UserId修改
      */
-    Integer updateSysAccountByUserId(Account bean, Integer userId);
+    Integer updateAccountByUserId(Account bean, Integer userId);
 
 
     /**
      * 根据UserId删除
      */
-    Integer deleteSysAccountByUserId(Integer userId);
+    Integer deleteAccountByUserId(Integer userId);
 
 
     /**
      * 根据Phone查询对象
      */
-    Account getSysAccountByPhone(String phone);
+    Account getAccountByPhone(String phone);
 
 
     /**
      * 根据Phone修改
      */
-    Integer updateSysAccountByPhone(Account bean, String phone);
+    Integer updateAccountByPhone(Account bean, String phone);
 
 
     /**
      * 根据Phone删除
      */
-    Integer deleteSysAccountByPhone(String phone);
+    Integer deleteAccountByPhone(String phone);
 
     UserAdminSessionDto login(String phone, String password);
 
-    void saveSysAccount(Account account);
+    void saveAccount(Account account);
 }

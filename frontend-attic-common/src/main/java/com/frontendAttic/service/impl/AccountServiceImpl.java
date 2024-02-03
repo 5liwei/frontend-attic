@@ -31,7 +31,7 @@ import java.util.List;
 /**
  * 账号信息 业务接口实现
  */
-@Service("sysAccountService")
+@Service("AccountService")
 public class AccountServiceImpl implements AccountService {
 
     @Resource
@@ -126,7 +126,7 @@ public class AccountServiceImpl implements AccountService {
      * 根据UserId获取对象
      */
     @Override
-    public Account getSysAccountByUserId(Integer userId) {
+    public Account getAccountByUserId(Integer userId) {
         return this.accountMapper.selectByUserId(userId);
     }
 
@@ -134,7 +134,7 @@ public class AccountServiceImpl implements AccountService {
      * 根据UserId修改
      */
     @Override
-    public Integer updateSysAccountByUserId(Account bean, Integer userId) {
+    public Integer updateAccountByUserId(Account bean, Integer userId) {
         return this.accountMapper.updateByUserId(bean, userId);
     }
 
@@ -142,7 +142,7 @@ public class AccountServiceImpl implements AccountService {
      * 根据UserId删除
      */
     @Override
-    public Integer deleteSysAccountByUserId(Integer userId) {
+    public Integer deleteAccountByUserId(Integer userId) {
         return this.accountMapper.deleteByUserId(userId);
     }
 
@@ -150,7 +150,7 @@ public class AccountServiceImpl implements AccountService {
      * 根据Phone获取对象
      */
     @Override
-    public Account getSysAccountByPhone(String phone) {
+    public Account getAccountByPhone(String phone) {
         return this.accountMapper.selectByPhone(phone);
     }
 
@@ -158,7 +158,7 @@ public class AccountServiceImpl implements AccountService {
      * 根据Phone修改
      */
     @Override
-    public Integer updateSysAccountByPhone(Account bean, String phone) {
+    public Integer updateAccountByPhone(Account bean, String phone) {
         return this.accountMapper.updateByPhone(bean, phone);
     }
 
@@ -166,7 +166,7 @@ public class AccountServiceImpl implements AccountService {
      * 根据Phone删除
      */
     @Override
-    public Integer deleteSysAccountByPhone(String phone) {
+    public Integer deleteAccountByPhone(String phone) {
         return this.accountMapper.deleteByPhone(phone);
     }
 
@@ -227,7 +227,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public void saveSysAccount(Account account) {
+    public void saveAccount(Account account) {
         Account phoneDb = accountMapper.selectByPhone(account.getPhone());
         if (phoneDb != null && (account.getUserId() == null || !phoneDb.getUserId().equals(account.getUserId()))) {
             throw new BusinessException("手机号已存在");

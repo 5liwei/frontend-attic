@@ -22,12 +22,12 @@ import javax.annotation.Resource;
 /**
  * 账号信息 Controller
  */
-@RestController("sysAccountController")
+@RestController("AccountController")
 @RequestMapping("/settings")
 public class AccountController extends ABaseController {
 
     @Resource
-    private AccountService sysAccountService;
+    private AccountService AccountService;
 
     @Resource
     private AppConfig appConfig;
@@ -40,13 +40,13 @@ public class AccountController extends ABaseController {
     public ResponseVO loadAccountList(AccountQuery query) {
         query.setOrderBy("create_time desc");
         query.setQueryRoles(true);
-        return createSuccessResponse(sysAccountService.findListByPage(query));
+        return createSuccessResponse(AccountService.findListByPage(query));
     }
 
     @RequestMapping("/saveAccount")
     @GlobalInterceptor(permissionCode = PermissionCodeEnum.CONFIG_ACCOUNT_MODIFY)
-    public ResponseVO saveAccount(@VerifyParam Account sysAccount) {
-        sysAccountService.saveSysAccount(sysAccount);
+    public ResponseVO saveAccount(@VerifyParam Account Account) {
+        AccountService.saveAccount(Account);
         return createSuccessResponse(null);
     }
 
@@ -56,7 +56,7 @@ public class AccountController extends ABaseController {
                                      @VerifyParam(required = true, regex = VerifyRegexEnum.PASSWORD) String password) {
         Account updateInfo = new Account();
         updateInfo.setPassword(StringUtil.encodeByMD5(password));
-        sysAccountService.updateSysAccountByUserId(updateInfo, userId);
+        AccountService.updateAccountByUserId(updateInfo, userId);
         return createSuccessResponse(null);
     }
 
@@ -70,18 +70,18 @@ public class AccountController extends ABaseController {
         }
         Account updateInfo = new Account();
         updateInfo.setStatus(status);
-        sysAccountService.updateSysAccountByUserId(updateInfo, userId);
+        AccountService.updateAccountByUserId(updateInfo, userId);
         return createSuccessResponse(null);
     }
 
     @RequestMapping("/delAccount")
     @GlobalInterceptor(permissionCode = PermissionCodeEnum.CONFIG_ACCOUNT_DELETE)
     public ResponseVO delAccount(@VerifyParam Integer userId) {
-        Account sysAccount = this.sysAccountService.getSysAccountByUserId(userId);
-        if (!StringUtil.isEmpty(appConfig.getSuperAdminPhones()) && ArrayUtils.contains(appConfig.getSuperAdminPhones().split(","), sysAccount.getPhone())) {
+        Account Account = this.AccountService.getAccountByUserId(userId);
+        if (!StringUtil.isEmpty(appConfig.getSuperAdminPhones()) && ArrayUtils.contains(appConfig.getSuperAdminPhones().split(","), Account.getPhone())) {
             throw new BusinessException("系统超级管理员不允许删除");
         }
-        sysAccountService.deleteSysAccountByUserId(userId);
+        AccountService.deleteAccountByUserId(userId);
         return createSuccessResponse(null);
     }
 }

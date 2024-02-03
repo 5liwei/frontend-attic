@@ -15,10 +15,10 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 import javax.servlet.http.HttpServletRequest;
 
 @RestControllerAdvice
-public class AGlobalExceptionHandlerController extends ABaseController {
+public class GlobalExceptionHandlerController extends ABaseController {
 
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(AGlobalExceptionHandlerController.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(GlobalExceptionHandlerController.class);
 
     @ExceptionHandler(value = Exception.class)
     public Object globalExceptionHandling(Exception exception, HttpServletRequest request) {

@@ -1,8 +1,12 @@
 package com.frontendAttic.controller;
 
+import com.frontendAttic.entity.constants.Constants;
+import com.frontendAttic.entity.dto.UserAdminSessionDto;
 import com.frontendAttic.entity.enums.ResponseCodeEnum;
 import com.frontendAttic.entity.vo.ResponseVO;
 import com.frontendAttic.exception.BusinessException;
+
+import javax.servlet.http.HttpSession;
 
 public class ABaseController {
 
@@ -21,5 +25,10 @@ public class ABaseController {
 
     protected <T> ResponseVO<T> createServerErrorResponse(T data) {
         return new ResponseVO<>(STATUS_ERROR, ResponseCodeEnum.CODE_500.getCode(), ResponseCodeEnum.CODE_500.getMsg(), data);
+    }
+
+    protected UserAdminSessionDto getUserAdminFromSession(HttpSession session) {
+        UserAdminSessionDto sessionUserAdminDto = (UserAdminSessionDto) session.getAttribute(Constants.SESSION_KEY);
+        return sessionUserAdminDto;
     }
 }
