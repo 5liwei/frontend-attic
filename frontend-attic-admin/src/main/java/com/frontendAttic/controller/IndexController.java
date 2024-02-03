@@ -3,7 +3,6 @@ package com.frontendAttic.controller;
 import com.frontendAttic.annotation.GlobalInterceptor;
 import com.frontendAttic.entity.enums.PermissionCodeEnum;
 import com.frontendAttic.entity.vo.ResponseVO;
-import com.frontendAttic.service.DataStatisticsService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -11,7 +10,7 @@ import javax.annotation.Resource;
 
 @RestController("indexController")
 @RequestMapping("/index")
-public class IndexController extends ABaseController {
+public class IndexController extends BaseController {
 
     @Resource
     private com.frontendAttic.service.DataStatisticsService DataStatisticsService;

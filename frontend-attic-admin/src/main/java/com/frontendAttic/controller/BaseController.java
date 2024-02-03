@@ -8,7 +8,7 @@ import com.frontendAttic.exception.BusinessException;
 
 import javax.servlet.http.HttpSession;
 
-public class ABaseController {
+public class BaseController {
 
     protected static final String STATUS_SUCCESS = "success";
     protected static final String STATUS_ERROR = "error";

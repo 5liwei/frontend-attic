@@ -20,7 +20,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @RestController
-public class LoginController extends ABaseController {
+public class LoginController extends BaseController {
 
     @Resource
     private AccountService accountService;

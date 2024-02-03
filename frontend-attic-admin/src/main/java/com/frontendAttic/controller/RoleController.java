@@ -17,7 +17,7 @@ import javax.annotation.Resource;
  */
 @RestController("RoleController")
 @RequestMapping("/settings")
-public class RoleController extends ABaseController {
+public class RoleController extends BaseController {
 
     @Resource
     private RoleService roleService;

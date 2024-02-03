@@ -24,7 +24,7 @@ import javax.annotation.Resource;
  */
 @RestController("AccountController")
 @RequestMapping("/settings")
-public class AccountController extends ABaseController {
+public class AccountController extends BaseController {
 
     @Resource
     private AccountService AccountService;

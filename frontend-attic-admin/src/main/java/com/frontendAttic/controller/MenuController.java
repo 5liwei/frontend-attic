@@ -18,7 +18,7 @@ import java.util.List;
  */
 @RestController("MenuController")
 @RequestMapping("/settings")
-public class MenuController extends ABaseController {
+public class MenuController extends BaseController {
 
     @Resource
     private MenuService menuService;
